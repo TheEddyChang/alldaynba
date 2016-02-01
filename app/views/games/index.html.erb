@@ -1,0 +1,87 @@
+<div class="nba-logo">
+	<h1>NBA Game Predictions</h1>
+</div>
+<div class="todays-games">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<p>Games on <%= DateTime.now.strftime("%e-%b-%Y") %></p>
+			<br><br>
+			
+			<% @allTeams.each do |n| %>
+			<% n['sports_content']['games']['game'].each do |x| %>
+			<p><a href="/team" style="text-decoration: none">
+				<%= x['home']['city'] + " " + x['home']['nickname'] %>
+			</a>&nbsp&nbsp&nbsp
+			vs
+			&nbsp&nbsp&nbsp
+			<a href="/team" style="text-decoration: none">
+				<%= x['visitor']['city'] + " " + x['visitor']['nickname'] %>
+			</a>
+		</p>
+		<hr>
+		
+
+		
+		<p><%= x['period_time']['period_status']%></p>
+		<p><%= x['home']['score'] %> <%= x['visitor']['score'] %></p>
+		
+		<%= @homeTeamID = x['home']['id'] %>
+		<%= @homeTeamID %>
+		
+		<br><br><br><br>
+		
+		<% end %>
+		<% end %>
+	</div>
+</div>
+</div>
+<!-- <div class="container">
+<div class="hometeam-info">
+		<div class="row">
+				<div class="col-md-3">
+						<% @teamInfo.each do |z| %>
+						<% z['resultSets'].each do |y| %>
+						<% if y['name'] == 'TeamInfoCommon' %>
+						<% y['rowSet'].each do |g| %>
+						<p>Conference: <%= g[5] %></p>
+						<p>Conference Rank: <%= g[11] %></p>
+						<p>Record: <%= g[8] %> - <%= g[9] %></p>
+						<% end %>
+						<% end %>
+						<% if y['name'] == 'TeamSeasonRanks' %>
+						<% y['rowSet'].each do |e| %>
+						<p>Points Per Game: <%= e[4] %></p>
+						<p>Rebounds Per Game: <%= e[6] %></p>
+						<p>Assists Per Game: <%= e[8] %></p>
+						<% end %>
+						<% end %>
+						<% end %>
+						<% end %>
+				</div>
+		</div>
+</div>
+</div> -->
+<!-- <div class="visitingteam-info">
+<div class="row">
+		<div class="col-md-3">
+				<% @teamInfo.each do |z| %>
+				<% z['resultSets'].each do |y| %>
+				<% if y['name'] == 'TeamInfoCommon' %>
+				<% y['rowSet'].each do |g| %>
+				<p>Conference: <%= g[5] %></p>
+				<p>Conference Rank: <%= g[11] %></p>
+				<p>Record: <%= g[8] %> - <%= g[9] %></p>
+				<% end %>
+				<% end %>
+				<% if y['name'] == 'TeamSeasonRanks' %>
+				<% y['rowSet'].each do |e| %>
+				<p>Points Per Game: <%= e[4] %></p>
+				<p>Rebooints unds Per Game: <%= e[6] %></p>
+				<p>Assists Per Game: <%= e[8] %></p>
+				<% end %>
+				<% end %>
+				<% end %>
+				<% end %>
+		</div>
+</div>
+</div> -->

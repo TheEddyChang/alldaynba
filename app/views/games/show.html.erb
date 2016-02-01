@@ -1,0 +1,43 @@
+<!-- <!-- <div class="container">
+  <h2>Player Stats</h2>
+  
+<table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>FG%</th>
+        <th>FG3%</th>
+        <th>FT%</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>TO</th>
+        <th>STL</th>
+        <th>BLK</th>
+        <th>PTS</th>
+      </tr>
+
+    <tbody>
+      <% @playerInfo.each do |f| %>
+      <% f['resultSets'].each do |s| %>
+      <% if s['name'] == 'PlayersSeasonTotals' %>
+      <% s['rowSet'].each do |w| %>
+      <tr>
+        <td><%= w[2] %></td>
+        <td><%= w[10] %></td>
+        <td><%= w[13] %></td>
+        <td><%= w[16] %></td>
+        <td><%= w[19] %></td>
+        <td><%= w[20] %></td>
+        <td><%= w[21] %></td>
+        <td><%= w[22] %></td>
+        <td><%= w[23] %></td>
+        <td><%= w[27] %></td>
+      </tr>
+      
+      <% end %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div> 

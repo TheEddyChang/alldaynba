@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AllDayNBA</title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<ul class="breadcrumb">
+  <li><img src="https://www.siriusxm.com/servlet/Satellite?blobcol=urlimage&blobkey=id&blobtable=ImageAsset&blobwhere=1282009798325&ssbinary=true"><a href="/">All Day NBA</a></li>
+  <li class="about"><a href="/about">About</a></li>
+  <!-- <li class="active">Data</li> -->
+</ul>
+
+<%= yield %>
+
+</body>
+</html>
