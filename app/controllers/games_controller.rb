@@ -1,9 +1,7 @@
 class GamesController < ApplicationController
-  attr_accessor :homeTeamID
-  attr_accessor :visitingTeamID
- 
-
   
+  
+
   #endpoint-game.json
   def gameInfo(date)
     url = "http://data.nba.com/data/5s/json/cms/noseason/scoreboard/#{date}/games.json"
@@ -56,6 +54,8 @@ class GamesController < ApplicationController
 
   def create
   end
+
+ 
 
 
 end

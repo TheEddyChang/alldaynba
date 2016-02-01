@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  fg_percent: 1
+  fg3_percent: 1
+  ft_percent: 1
+  reb: 1
+  assist: 1
+  tov: 1
+  stl: 1
+  blk: 1
+  pts: 1
+
+two:
+  name: MyString
+  fg_percent: 1
+  fg3_percent: 1
+  ft_percent: 1
+  reb: 1
+  assist: 1
+  tov: 1
+  stl: 1
+  blk: 1
+  pts: 1
