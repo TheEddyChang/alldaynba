@@ -82,7 +82,8 @@ task :todays_games_info => :environment do
           end
         end
       end #ends visit_info loop
-      Team.create(visitor_team)
+      newVisitorTeam = Team.create(visitor_team)
+      #game.visitor_team = newVisitorTeam
       createPlayers(game[:visit_teamID])
 
 

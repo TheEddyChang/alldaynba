@@ -1,86 +1,45 @@
 <div class="nba-logo">
 	<h1>NBA Game Predictions</h1>
 </div>
-<!-- <div class="todays-games">
+<div class="todays-games">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
 			<p>Games on <%= DateTime.now.strftime("%e-%b-%Y") %></p>
 			<br><br>
 			
-			<% @allTeams.each do |n| %>
-			<% n['sports_content']['games']['game'].each do |x| %>
-			<p><a href="/team" style="text-decoration: none">
-				<%= x['home']['city'] + " " + x['home']['nickname'] %>
-			</a>&nbsp&nbsp&nbsp
-			vs
-			&nbsp&nbsp&nbsp
-			<a href="/team" style="text-decoration: none">
-				<%= x['visitor']['city'] + " " + x['visitor']['nickname'] %>
-			</a>
+			<% @allGames.each do | game | %>
+			
+			<p><a href="/team" style="text-decoration: none"></a>
+				
+				<%= "#{game.home_team.city} #{game.home_team.name} vs #{game.visitor_team.city} #{game.visitor_team.name}" %>
+			
+
+		<p class="home-team-info"> 
+      Conference: <%= "#{game.home_team.conference}" %><br>
+      Conference Rank: <%= "#{game.home_team.rank}" %><br>
+			Record: <%= "#{game.home_team.wins} - #{game.home_team.losses}" %>
 		</p>
-		<hr>
+		<p class="visiting-team-info"> 
+      Conference: <%= "#{game.visitor_team.conference}" %><br>
+      Conference Rank: <%= "#{game.visitor_team.rank}" %><br>
+			Record: <%= "#{game.visitor_team.wins} - #{game.visitor_team.losses}" %>
+		</p>
 		
 
-		
-		<p><%= x['period_time']['period_status']%></p>
-		<p><%= x['home']['score'] %> <%= x['visitor']['score'] %></p>
+
+		<p><%= "#{game.time_of_game}" %></p>
+		<p><%= "#{game.home_points}" %> <%= "#{game.visiting_points}" %></p>
 		
 	
 		
 		<br><br><br><br>
 		
-		<% end %>
+		
 		<% end %>
 	</div>
 </div>
-</div> -->
-<div class="container">
-<div class="hometeam-info">
-		<div class="row">
-				<div class="col-md-3">
-						<% @teamInfo.each do |z| %>
-						<% z['resultSets'].each do |y| %>
-						<% if y['name'] == 'TeamInfoCommon' %>
-						<% y['rowSet'].each do |g| %>
-						<p>Conference: <%= g[5] %></p>
-						<p>Conference Rank: <%= g[11] %></p>
-						<p>Record: <%= g[8] %> - <%= g[9] %></p>
-						<% end %>
-						<% end %>
-						<% if y['name'] == 'TeamSeasonRanks' %>
-						<% y['rowSet'].each do |e| %>
-						<p>Points Per Game: <%= e[4] %></p>
-						<p>Rebounds Per Game: <%= e[6] %></p>
-						<p>Assists Per Game: <%= e[8] %></p>
-						<% end %>
-						<% end %>
-						<% end %>
-						<% end %>
-				</div>
-		</div>
 </div>
-</div> 
-<!-- <div class="visitingteam-info">
-<div class="row">
-		<div class="col-md-3">
-				<% @teamInfo.each do |z| %>
-				<% z['resultSets'].each do |y| %>
-				<% if y['name'] == 'TeamInfoCommon' %>
-				<% y['rowSet'].each do |g| %>
-				<p>Conference: <%= g[5] %></p>
-				<p>Conference Rank: <%= g[11] %></p>
-				<p>Record: <%= g[8] %> - <%= g[9] %></p>
-				<% end %>
-				<% end %>
-				<% if y['name'] == 'TeamSeasonRanks' %>
-				<% y['rowSet'].each do |e| %>
-				<p>Points Per Game: <%= e[4] %></p>
-				<p>Rebooints unds Per Game: <%= e[6] %></p>
-				<p>Assists Per Game: <%= e[8] %></p>
-				<% end %>
-				<% end %>
-				<% end %>
-				<% end %>
-		</div>
-</div>
-</div> -->
+
+
+
+
