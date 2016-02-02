@@ -1,3 +1,29 @@
+    def createPlayers(teamID)
+      player_info = HTTParty.get(
+      'http://stats.nba.com/stats/teamplayerdashboard/',
+      { query: { DateFrom: nil, DateTo: nil, GameSegment: nil, LastNGames: '0', LeagueID: '00', Location: nil, MeasureType: 'Base', Month: '0', OpponentTeamID: '0', Outcome: nil, PaceAdjust: 'N', PerMode: 'PerGame', PerGame: nil, Period: '0', PlusMinus: 'N', Rank: 'N', Season: '2015-16', SeasonSegment: nil, SeasonType: 'Regular Season', TeamID: teamID, VsConference: nil, VsDivision: nil }, headers: { "User-Agent" => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36' }})
+
+      player_info['resultSets'].each do | result |
+        puts result['name']
+          player_stats = {}
+        if result['name'] == 'PlayersSeasonTotals'
+          result['rowSet'].each do | row |
+            player_stats[:name] = row[2]#playername
+            player_stats[:fg_percent] = row[10]#fg_pct
+            player_stats[:fg3_percent] = row[13]#fg3_pct
+            player_stats[:ft_percent] = row[16]#ft_pct
+            player_stats[:reb] = row[19]#reb
+            player_stats[:assist] = row[20]#ast
+            player_stats[:tov] = row[21]#tov
+            player_stats[:stl] = row[22]#stl
+            player_stats[:blk] = row[23]#blk
+            player_stats[:pts] = row[27]#pts
+          end
+          Player.create(player_stats)
+        end
+      end
+    end
+
 desc "tonights game info"
 task :todays_games_info => :environment do 
     currentDate = DateTime.now.strftime("%Y%m%d")
@@ -57,6 +83,7 @@ task :todays_games_info => :environment do
         end
       end #ends visit_info loop
       Team.create(visitor_team)
+      createPlayers(game[:visit_teamID])
 
 
       home_info['resultSets'].each do | result |
@@ -83,18 +110,18 @@ task :todays_games_info => :environment do
         end
       end #ends visit_info loop
       Team.create(home_team)
-
-      player_stats = {}
-
-      player_stats = HTTParty.get(
-      'http://stats.nba.com/stats/teamplayerdashboard/',
-      { query: { DateFrom: nil, DateTo: nil, GameSegment: nil, LastNGames: '0', LeagueID: '00', Location: nil, MeasureType: 'Base', Month: '0', OpponentTeamID: '0', Outcome: nil, PaceAdjust: 'N', PerMode: 'PerGame', PerGame: nil, Period: '0', PlusMinus: 'N', Rank: 'N', Season: '2015-16', SeasonSegment: nil, SeasonType: 'Regular Season', TeamID: team, VsConference: nil, VsDivision: nil }, headers: { "User-Agent" => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36' }})
+      createPlayers(game[:home_teamID])
 
       
 
 
+
+
     end #ends games.each
 end #ends task
+
+
+
 
 
 
