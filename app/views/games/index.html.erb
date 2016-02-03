@@ -1,36 +1,39 @@
-<div class="nba-logo">
-	<h1>NBA Game Predictions</h1>
+<h1><img src="http://tw.global.nba.com/media/img/players/silos/220x350/2544.png"><img src="http://www.westcoastbodycomp.com/wp-content/uploads/2014/09/WestCoastBodPod-NBA-Logo-234x100.png"><img src="http://en.global.nba.com/media/img/players/silos/220x350/977.png"></h1>
 </div>
 <div class="todays-games">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<p>Games on <%= DateTime.now.strftime("%e-%b-%Y") %></p>
-			<br><br>
-			
-			<% @allGames.each do | game | %>
-			
-			<p><a href="/team" style="text-decoration: none"></a>
-				
-				<%= "#{game.home_team.city} #{game.home_team.name} vs #{game.visitor_team.city} #{game.visitor_team.name}" %>
-			
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h2>Game Predictions for <%= DateTime.now.strftime("%e-%b-%Y") %></h2>
+		<br><br>
+		
+		<% @allGames.each do | game | %>
+		
+		
+	  
+		<a href=<%= "/game/#{game.id}" %> style="text-decoration: none"><img src=<%= "http://i.cdn.turner.com/nba/nba/.element/img/2.0/sect/gameinfo/teamlogos/#{game.home_team.team_key}.gif" %> ></a>&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp vs &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		
+		
+		<a href=<%= "/game/#{game.id}" %> style="text-decoration: none">
+		<img src=<%= "http://i.cdn.turner.com/nba/nba/.element/img/2.0/sect/gameinfo/teamlogos/#{game.visitor_team.team_key}.gif" %>></a>
+		
+		
 
-		<p class="home-team-info"> 
-      Conference: <%= "#{game.home_team.conference}" %><br>
-      Conference Rank: <%= "#{game.home_team.rank}" %><br>
+		<p class="home-team-info">
+			Conference: <%= "#{game.home_team.conference}" %><br>
+			Conference Rank: <%= "#{game.home_team.rank}" %><br>
 			Record: <%= "#{game.home_team.wins} - #{game.home_team.losses}" %>
 		</p>
-		<p class="visiting-team-info"> 
-      Conference: <%= "#{game.visitor_team.conference}" %><br>
-      Conference Rank: <%= "#{game.visitor_team.rank}" %><br>
+		<p class="visiting-team-info">
+			Conference: <%= "#{game.visitor_team.conference}" %><br>
+			Conference Rank: <%= "#{game.visitor_team.rank}" %><br>
 			Record: <%= "#{game.visitor_team.wins} - #{game.visitor_team.losses}" %>
 		</p>
 		
-
-
 		<p><%= "#{game.time_of_game}" %></p>
 		<p><%= "#{game.home_points}" %> <%= "#{game.visiting_points}" %></p>
 		
-	
+		
 		
 		<br><br><br><br>
 		
@@ -39,7 +42,3 @@
 	</div>
 </div>
 </div>
-
-
-
-

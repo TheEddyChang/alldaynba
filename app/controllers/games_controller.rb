@@ -8,11 +8,12 @@ class GamesController < ApplicationController
   end
 
   def show
-    @playerInfo = ;#all players from team 
-  
-    
-    
+
+    @game = Game.find_by_id(params[:id])
+    render :show
   end
+
+
 
 
   def new

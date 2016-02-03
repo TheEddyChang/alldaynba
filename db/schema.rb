@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201231005) do
+ActiveRecord::Schema.define(version: 20160203001131) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at",      null: false
@@ -27,17 +27,19 @@ ActiveRecord::Schema.define(version: 20160201231005) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
-    t.integer  "fg_percent"
-    t.integer  "fg3_percent"
-    t.integer  "ft_percent"
-    t.integer  "reb"
-    t.integer  "assist"
-    t.integer  "tov"
-    t.integer  "stl"
-    t.integer  "blk"
-    t.integer  "pts"
+    t.float    "fg_percent"
+    t.float    "fg3_percent"
+    t.float    "ft_percent"
+    t.float    "reb"
+    t.float    "assist"
+    t.float    "tov"
+    t.float    "stl"
+    t.float    "blk"
+    t.float    "pts"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "home"
+    t.integer  "TEAM_ID"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -48,11 +50,12 @@ ActiveRecord::Schema.define(version: 20160201231005) do
     t.integer  "rank"
     t.integer  "wins"
     t.integer  "losses"
-    t.integer  "pts_per_game"
-    t.integer  "reb_per_game"
-    t.integer  "asst_per_game"
+    t.float    "pts_per_game"
+    t.float    "reb_per_game"
+    t.float    "asst_per_game"
     t.integer  "nba_id"
     t.string   "city"
+    t.string   "team_key"
   end
 
 end

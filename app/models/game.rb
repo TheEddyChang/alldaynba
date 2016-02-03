@@ -4,6 +4,13 @@ class Game < ActiveRecord::Base
   scope :todays_games, -> {
     where(:date => DateTime.now.strftime("%Y%m%d"))
   }
+
+    def calculate_probability!
+      if 
+       self.home_team.reb_per_game
+       self.visitor_team.pts_per_game
+     end
+    end
   
 end
 
