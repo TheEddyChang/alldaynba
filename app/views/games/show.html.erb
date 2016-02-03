@@ -1,41 +1,7 @@
 <h1>Team Player Stats</h1>
-<div class="player">
-  <h2>Player Stats</h2>
-  
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>FG%</th>
-        <th>FG3%</th>
-        <th>FT%</th>
-        <th>REB</th>
-        <th>AST</th>
-        <th>TO</th>
-        <th>STL</th>
-        <th>BLK</th>
-        <th>PTS</th>
-      </tr>
-      <tbody>
-        <% @game.home_team.players.each do | player | %>
-        <tr>
-          <th><%= player.name %></th>
-          <th><%= player.fg_percent %></th>
-          <th><%= player.fg3_percent %></th>
-          <th><%= player.ft_percent %></th>
-          <th><%= player.reb %></th>
-          <th><%= player.assist %></th>
-          <th><%= player.tov %></th>
-          <th><%= player.stl %></th>
-          <th><%= player.blk %></th>
-          <th><%= player.pts%></th>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="player">
-    <h2>Player Stats</h2>
+<div class="row player-stats">
+  <div class="col-md-8 col-md-offset-2">
+    
     
     <table class="table table-condensed">
       <thead>
@@ -52,7 +18,7 @@
           <th>PTS</th>
         </tr>
         <tbody>
-          <% @game.visitor_team.players.each do | player | %>
+          <% @game.home_team.players.each do | player | %>
           <tr>
             <th><%= player.name %></th>
             <th><%= player.fg_percent %></th>
@@ -67,5 +33,45 @@
           </tr>
           <% end %>
         </tbody>
+      </thead>
+    </table>
+      
+      
+      
+      
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>FG%</th>
+            <th>FG3%</th>
+            <th>FT%</th>
+            <th>REB</th>
+            <th>AST</th>
+            <th>TO</th>
+            <th>STL</th>
+            <th>BLK</th>
+            <th>PTS</th>
+          </tr>
+          <tbody>
+            <% @game.visitor_team.players.each do | player | %>
+            <tr>
+              <th><%= player.name %></th>
+              <th><%= player.fg_percent %></th>
+              <th><%= player.fg3_percent %></th>
+              <th><%= player.ft_percent %></th>
+              <th><%= player.reb %></th>
+              <th><%= player.assist %></th>
+              <th><%= player.tov %></th>
+              <th><%= player.stl %></th>
+              <th><%= player.blk %></th>
+              <th><%= player.pts%></th>
+            </tr>
+            <% end %>
+          </tbody>
+        </thead>
       </table>
+      
+      
     </div>
+  </div>

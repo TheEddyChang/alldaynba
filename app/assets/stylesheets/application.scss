@@ -1,5 +1,5 @@
 body {
-  background-color: #F7FCB9;
+  background-color: #70628F;
 }
 
 .game-dates {
@@ -11,17 +11,18 @@ body {
   padding-top: 130px;
   font-family: 'Playfair Display SC', serif;
   font-size: 22px;
-  color: black;
+  color: white;
 }
 
 .player-info {
   font-size: 13px;
-  color: black;
+  color: white;
 }
 
 h1 {
   text-align: center;
   font-family: 'PT Sans Narrow', sans-serif;
+  color: white;
 }
 
 .about {
@@ -45,5 +46,17 @@ a {
   margin-left: 250px;
   font-size: 15px;
   margin-top: -72px;
+}
+
+h2 {
+  color: white;
+}
+
+.ADN {
+  color:white;
+}
+
+.player-stats {
+  color: white;
 }
 

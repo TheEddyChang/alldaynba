@@ -5,16 +5,28 @@ class Game < ActiveRecord::Base
     where(:date => DateTime.now.strftime("%Y%m%d"))
   }
 
-    def calculate_probability!
-      if 
-       self.home_team.reb_per_game
-       self.visitor_team.pts_per_game
-     end
-    end
-  
+  def calculate_probability!
+
+    home_reb = self.home_team.reb_per_game
+    home_pts = self.home_team.pts_per_game
+    home_ast = self.home_team.asst_per_game
+
+    visit_reb = self.visitor_team.reb_per_game
+    visit_pts = self.visitor_team.pts_per_game
+    visit_ast = self.visitor_team.asst_per_game
+
+    total_reb = home_reb + visit_reb
+    total_pts = home_pts + visit_pts
+    total_ast = home_ast + visit_ast
+
+    home_stat = home_reb/(total_reb) * 0.3 + home_pts/(total_pts) * 0.4 + home_ast/(total_ast) * 0.3
+
+    visit_stat = visit_reb/(total_reb) * 0.3 + visit_pts/(total_pts) * 0.4 + visit_ast/(total_ast) * 0.3
+
+    puts (home_stat * 100).round
+    puts (visit_stat * 100).round
+   
+
+   end
+
 end
-
-
-
-
-
