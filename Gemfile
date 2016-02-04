@@ -47,5 +47,7 @@ group :development do
 
   gem 'httparty', '~> 0.13.7'
   gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
+  gem 'rails_12factor'
 end
 
