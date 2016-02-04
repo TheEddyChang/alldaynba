@@ -23,10 +23,8 @@ class Game < ActiveRecord::Base
 
     visit_stat = visit_reb/(total_reb) * 0.3 + visit_pts/(total_pts) * 0.4 + visit_ast/(total_ast) * 0.3
 
-    puts (home_stat * 100).round
-    puts (visit_stat * 100).round
-   
-
+    self.home_probability = (home_stat * 100).round.to_f
+    self.visitor_probability = (visit_stat * 100).round.to_f
    end
 
 end

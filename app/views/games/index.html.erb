@@ -8,11 +8,10 @@
 		<br><br>
 		
 		<% @allGames.each do | game | %>
+		<% game.calculate_probability! %>
 		
-		<!-- #{{game.home_team.calculate_probability!}}
-		#{{game.visitor_team,calculate_probability!}} -->
-	  
-		<a href=<%= "/game/#{game.id}" %> style="text-decoration: none"><img src=<%= "http://i.cdn.turner.com/nba/nba/.element/img/2.0/sect/gameinfo/teamlogos/#{game.home_team.team_key}.gif" %> ></a>&nbsp&nbsp&nbsp
+    
+    <a href=<%= "/game/#{game.id}" %> style="text-decoration: none"><img src=<%= "http://i.cdn.turner.com/nba/nba/.element/img/2.0/sect/gameinfo/teamlogos/#{game.home_team.team_key}.gif" %> ></a>&nbsp&nbsp&nbsp
 		&nbsp&nbsp&nbsp vs &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		
 		
@@ -24,12 +23,16 @@
 		<p class="home-team-info">
 			Conference: <%= "#{game.home_team.conference}" %><br>
 			Conference Rank: <%= "#{game.home_team.rank}" %><br>
-			Record: <%= "#{game.home_team.wins} - #{game.home_team.losses}" %>
+			Record: <%= "#{game.home_team.wins} - #{game.home_team.losses}" %><br>
+			Win Probability: <%= "#{game.home_probability}" %>%
+			
 		</p>
 		<p class="visiting-team-info">
 			Conference: <%= "#{game.visitor_team.conference}" %><br>
 			Conference Rank: <%= "#{game.visitor_team.rank}" %><br>
-			Record: <%= "#{game.visitor_team.wins} - #{game.visitor_team.losses}" %>
+			Record: <%= "#{game.visitor_team.wins} - #{game.visitor_team.losses}" %><br>
+			Win Probability: <%= "#{game.visitor_probability}"%>%
+			
 		</p>
 		
 		<p><%= "#{game.time_of_game}" %></p>

@@ -47,7 +47,7 @@ task :todays_games_info => :environment do
     game[:home_teamID] = result['home']['id']
     game[:nba_id] = result['id']
    
-    team_keys[game[:nba_id]] = {
+    team_keys[game[:nba_id]] = {      #key for NBA logos
       home_team: result['home']['team_key'],
       visitor_team: result['visitor']['team_key']
     }
@@ -55,7 +55,7 @@ task :todays_games_info => :environment do
   end
 
   games.each do |game|
-    Game.create(game)
+    new_game = Game.create(game)
 
 
     visitor_team = {}
@@ -124,9 +124,8 @@ task :todays_games_info => :environment do
     home_team[:team_key] = team_keys[game[:nba_id]][:home_team]
     Team.create(home_team)
     createPlayers(game[:home_teamID])
-
-
-
+    puts game
+    new_game.calculate_probability!
 
 
 

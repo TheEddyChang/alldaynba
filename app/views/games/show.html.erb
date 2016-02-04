@@ -1,6 +1,13 @@
-<h1>Team Player Stats</h1>
+<% @allGames.each do | game | %>
+
+
+
+<h1><%= "#{game.home_team.name}" %> Player Stats</h1>
 <div class="row player-stats">
   <div class="col-md-8 col-md-offset-2">
+    
+
+
     
     
     <table class="table table-condensed">
@@ -38,7 +45,7 @@
       
       
       
-      
+      <h1><%= "#{game.visitor_team.name}" %> Player Stats</h1>
       <table class="table table-condensed">
         <thead>
           <tr>
@@ -75,3 +82,5 @@
       
     </div>
   </div>
+
+  <% end %>
